@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8231968403723970939}
   - component: {fileID: 8231968403723970934}
   - component: {fileID: 8231968403723970935}
+  - component: {fileID: 2736015802683995449}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -146,6 +147,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerTransform: {fileID: 8231968403723970933}
   rb: {fileID: 8231968403723970939}
+  animator: {fileID: 2736015802683995449}
+  spriteRenderer: {fileID: 8231968403723970932}
   direction: 0
   speed: 2
   jumpForce: 4
@@ -154,3 +157,22 @@ MonoBehaviour:
   isGrounded: 0
   isOnWall: 0
   levelManager: {fileID: 0}
+--- !u!95 &2736015802683995449
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8231968403723970938}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a92e848fa608b3a44a32925c735c18ce, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

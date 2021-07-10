@@ -9,6 +9,10 @@ public class PlayerMovement : MonoBehaviour
 
     public Rigidbody2D rb;
 
+    public Animator animator;
+
+    public SpriteRenderer spriteRenderer;
+
     public int direction;
 
     public float speed;
@@ -53,6 +57,8 @@ public class PlayerMovement : MonoBehaviour
     {
         // Moves the player
         Move();
+
+        CheckDirection();
     }
 
     /// <summary>
@@ -63,6 +69,23 @@ public class PlayerMovement : MonoBehaviour
         // Moves the player in the current direction they are facing multiplied by the speed and time passed
         // since the last FixedUpdate was called
         playerTransform.position += new Vector3(direction, 0, 0) * speed * Time.fixedDeltaTime;
+    }
+
+    /// <summary>
+    /// Changes direction the player is facing based on their movement direction
+    /// </summary>
+    private void CheckDirection()
+    {
+        // If moving to the right, have sprite face right
+        if (direction == 1)
+        {
+            spriteRenderer.flipX = false;
+        }
+        // If moving to the left, have sprite face left
+        else
+        {
+            spriteRenderer.flipX = true;
+        }
     }
 
     /// <summary>
@@ -100,6 +123,7 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.tag == "Ground")
         {
             isGrounded = true;
+            animator.SetBool("IsJumping", false);
         }
         // If a game object tagged with wall enters the player collision, set isOnWall to true
         else if (collision.gameObject.tag == "Wall")
@@ -114,6 +138,7 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.tag == "Ground")
         {
             isGrounded = false;
+            animator.SetBool("IsJumping", true);
         }
         // If a game object tagged with wall exits the player collision, set isOnWall to false
         else if (collision.gameObject.tag == "Wall")

@@ -6,6 +6,8 @@ public class EnemyMovement : MonoBehaviour
 {
     public Transform enemyTransform;
 
+    public SpriteRenderer spriteRenderer;
+
     public int direction;
 
     public int speed;
@@ -32,6 +34,8 @@ public class EnemyMovement : MonoBehaviour
     {
         Move();
 
+        CheckDirection();
+
         CheckMaxDistance();
     }
 
@@ -43,6 +47,23 @@ public class EnemyMovement : MonoBehaviour
         // Move enemy in current direction they are facing multiplied by the speed and the time that
         // has passed since the last FixedUpdate call
         enemyTransform.position += new Vector3(direction, 0, 0) * speed * Time.fixedDeltaTime;
+    }
+
+    /// <summary>
+    /// Changes direction the enemy is facing based on their movement direction
+    /// </summary>
+    private void CheckDirection()
+    {
+        // If moving to the right, have sprite face right
+        if (direction == 1)
+        {
+            spriteRenderer.flipX = false;
+        }
+        // If moving to the left, have sprite face left
+        else
+        {
+            spriteRenderer.flipX = true;
+        }
     }
 
     /// <summary>
