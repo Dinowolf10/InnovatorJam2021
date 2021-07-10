@@ -25,6 +25,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private bool isOnWall;
 
+    public GameObject levelManager;
+
     // Start is called before the first frame update
     private void Start()
     {
