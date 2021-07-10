@@ -10,7 +10,7 @@ public class EnemyMovement : MonoBehaviour
 
     public int direction;
 
-    public int speed;
+    public float speed;
 
     public float maxLeftDistance;
 

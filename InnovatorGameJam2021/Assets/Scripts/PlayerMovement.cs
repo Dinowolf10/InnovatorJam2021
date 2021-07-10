@@ -31,8 +31,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private bool isOnWall;
 
-    public GameObject levelManager;
-
     // Start is called before the first frame update
     private void Start()
     {
@@ -184,6 +182,12 @@ public class PlayerMovement : MonoBehaviour
 
             // Set the gravity scale to 0.5
             rb.gravityScale = 0.5f;
+        }
+
+        // If this player touches oil, destroy this player
+        if (collision.gameObject.tag == "Oil")
+        {
+            Destroy(this.gameObject);
         }
     }
 
