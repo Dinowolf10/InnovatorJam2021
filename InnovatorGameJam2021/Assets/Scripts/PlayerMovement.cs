@@ -15,8 +15,15 @@ public class PlayerMovement : MonoBehaviour
 
     public float jumpForce;
 
+    public float forwardWallForce;
+
+    public float verticalWallForce;
+
     [SerializeField]
     private bool isGrounded;
+
+    [SerializeField]
+    private bool isOnWall;
 
     // Start is called before the first frame update
     private void Start()
@@ -28,10 +35,15 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        // Checks for jump input
+        // Checks for jump input on ground
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             Jump();
+        }
+        // Checks for jump input on wall
+        else if (Input.GetButtonDown("Jump") && isOnWall)
+        {
+            WallJump();
         }
     }
 
@@ -60,21 +72,51 @@ public class PlayerMovement : MonoBehaviour
         rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
     }
 
+    /// <summary>
+    /// Switches the player direction and adds force to the x and y axis to simulate a wall jump
+    /// </summary>
+    private void WallJump()
+    {
+        // If player is currently moving right, change the direction to move left
+        if (direction == 1)
+        {
+            direction = -1;
+        }
+        // If player is currently moving left, change the direction to move right
+        else if (direction == -1)
+        {
+            direction = 1;
+        }
+
+        // Add force to the player using the player direction, forward, and verticle wall force
+        rb.AddForce(new Vector2(direction * forwardWallForce, verticalWallForce), ForceMode2D.Impulse);
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        // If a game object tagged with ground enters the player collision, set isGrounded to false
+        // If a game object tagged with ground enters the player collision, set isGrounded to true
         if (collision.gameObject.tag == "Ground")
         {
             isGrounded = true;
+        }
+        // If a game object tagged with wall enters the player collision, set isOnWall to true
+        else if (collision.gameObject.tag == "Wall")
+        {
+            isOnWall = true;
         }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        // If a game object tagged with ground leaves the player collision, set isGrounded to false
+        // If a game object tagged with ground exits the player collision, set isGrounded to false
         if (collision.gameObject.tag == "Ground")
         {
             isGrounded = false;
+        }
+        // If a game object tagged with wall exits the player collision, set isOnWall to false
+        else if (collision.gameObject.tag == "Wall")
+        {
+            isOnWall = false;
         }
     }
 }

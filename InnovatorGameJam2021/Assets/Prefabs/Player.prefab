@@ -180,4 +180,7 @@ MonoBehaviour:
   direction: 0
   speed: 2
   jumpForce: 4
+  forwardWallForce: 2
+  verticalWallForce: 5
   isGrounded: 0
+  isOnWall: 0
