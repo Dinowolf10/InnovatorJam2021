@@ -2593,6 +2593,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 7760690580416441437, guid: 2d18c3a710fd42f43aff74c4f46a8ca6, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7760690580416441439, guid: 2d18c3a710fd42f43aff74c4f46a8ca6, type: 3}
       propertyPath: m_Name
       value: PauseGameTrigger5
@@ -2825,6 +2829,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 20.5625
       objectReference: {fileID: 0}
+    - target: {fileID: 7760690580416441437, guid: 2d18c3a710fd42f43aff74c4f46a8ca6, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7760690580416441439, guid: 2d18c3a710fd42f43aff74c4f46a8ca6, type: 3}
       propertyPath: m_Name
       value: PauseGameTrigger2
@@ -2899,6 +2907,10 @@ PrefabInstance:
     - target: {fileID: 7760690580416441426, guid: 2d18c3a710fd42f43aff74c4f46a8ca6, type: 3}
       propertyPath: m_LocalScale.x
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7760690580416441437, guid: 2d18c3a710fd42f43aff74c4f46a8ca6, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7760690580416441439, guid: 2d18c3a710fd42f43aff74c4f46a8ca6, type: 3}
       propertyPath: m_Name
@@ -3382,6 +3394,10 @@ PrefabInstance:
     - target: {fileID: 7760690580416441426, guid: 2d18c3a710fd42f43aff74c4f46a8ca6, type: 3}
       propertyPath: m_LocalScale.x
       value: 7.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 7760690580416441437, guid: 2d18c3a710fd42f43aff74c4f46a8ca6, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7760690580416441439, guid: 2d18c3a710fd42f43aff74c4f46a8ca6, type: 3}
       propertyPath: m_Name
@@ -5009,6 +5025,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7760690580416441426, guid: 2d18c3a710fd42f43aff74c4f46a8ca6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7760690580416441437, guid: 2d18c3a710fd42f43aff74c4f46a8ca6, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7760690580416441439, guid: 2d18c3a710fd42f43aff74c4f46a8ca6, type: 3}

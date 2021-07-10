@@ -9,6 +9,7 @@ TagManager:
   - Wall
   - Pause
   - Oil
+  - SuperJump
   layers:
   - Default
   - TransparentFX

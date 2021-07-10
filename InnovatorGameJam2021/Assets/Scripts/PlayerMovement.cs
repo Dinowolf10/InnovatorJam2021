@@ -25,6 +25,12 @@ public class PlayerMovement : MonoBehaviour
 
     public float verticalWallForce;
 
+    public float superJumpForwardForce;
+
+    public float superJumpVerticalForce;
+
+    public bool superJump;
+
     [SerializeField]
     private bool isGrounded;
 
@@ -120,8 +126,20 @@ public class PlayerMovement : MonoBehaviour
             movingRight = true;
         }
 
-        // Add force to the player using the player direction, forward, and verticle wall force
-        rb.AddForce(new Vector2(direction * forwardWallForce, verticalWallForce), ForceMode2D.Impulse);
+        // If player has a super jump
+        if (superJump)
+        {
+            // Add force to the player using the player direction, superJumpForward, and superJumpVertical wall force
+            rb.AddForce(new Vector2(direction * superJumpForwardForce, superJumpVerticalForce), ForceMode2D.Impulse);
+
+            // Set superJump to false
+            superJump = false;
+        }
+        else
+        {
+            // Add force to the player using the player direction, forward, and verticle wall force
+            rb.AddForce(new Vector2(direction * forwardWallForce, verticalWallForce), ForceMode2D.Impulse);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -188,6 +206,14 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.tag == "Oil")
         {
             Destroy(this.gameObject);
+        }
+
+        // If player hits a super jump power-up, set super jump to true and destroy the super jump object
+        if (collision.gameObject.tag == "SuperJump")
+        {
+            superJump = true;
+
+            Destroy(collision.gameObject);
         }
     }
 
