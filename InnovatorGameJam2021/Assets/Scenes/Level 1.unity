@@ -847,7 +847,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7760690580416441426, guid: 2d18c3a710fd42f43aff74c4f46a8ca6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 14.23
+      value: 14.22
       objectReference: {fileID: 0}
     - target: {fileID: 7760690580416441426, guid: 2d18c3a710fd42f43aff74c4f46a8ca6, type: 3}
       propertyPath: m_LocalPosition.y
@@ -946,7 +946,7 @@ TilemapCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

@@ -61,6 +61,7 @@ public class PlayerMovement : MonoBehaviour
         // Moves the player
         Move();
 
+        // Checks for what direction the player if facing to update the sprite
         CheckDirection();
     }
 
@@ -105,6 +106,7 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     private void WallJump()
     {
+        // Sets the rigidbody velocity to 0
         rb.velocity = new Vector2(0, 0);
 
         // If player is currently moving right, change the direction to move left
@@ -126,27 +128,29 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        // If a game object tagged with ground enters the player collision, set isGrounded to true
+        // If a game object tagged with ground enters the player collision
+        // and the player is not on a wall, set the direction and isGrounded to true
         if (collision.gameObject.tag == "Ground")
         {
-            if (movingRight)
-            {
-                direction = 1;
-            }
-            else
-            {
-                direction = -1;
-            }
-
-            isGrounded = true;
+            // Set animator jumping bool to false
             animator.SetBool("IsJumping", false);
-        }
-        // If a game object tagged with wall enters the player collision, set isOnWall to true
-        else if (collision.gameObject.tag == "Wall")
-        {
-            isOnWall = true;
-            direction = 0;
-            rb.gravityScale = 0.5f;
+
+            // Set isGrounded to true
+            isGrounded = true;
+
+            if (!isOnWall)
+            {
+                // If player is movingRight, set direction to 1
+                if (movingRight)
+                {
+                    direction = 1;
+                }
+                // Otherwise set direction to -1
+                else
+                {
+                    direction = -1;
+                }
+            }
         }
     }
 
@@ -155,23 +159,55 @@ public class PlayerMovement : MonoBehaviour
         // If a game object tagged with ground exits the player collision, set isGrounded to false
         if (collision.gameObject.tag == "Ground")
         {
+            // Set isGrounded to false
             isGrounded = false;
+
+            // Set IsJumping animator bool to true
             animator.SetBool("IsJumping", true);
         }
-        // If a game object tagged with wall exits the player collision, set isOnWall to false
-        else if (collision.gameObject.tag == "Wall")
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        // If a game object tagged with wall enters the player collision
+        // and the player is not on a wall
+        if (collision.gameObject.tag == "Wall" && !isOnWall)
         {
+            // Set the rigidbody velocity to 0
+            rb.velocity = new Vector2(0, 0);
+
+            // Set isOnWall to true
+            isOnWall = true;
+
+            // Set the direction to 0
+            direction = 0;
+
+            // Set the gravity scale to 0.5
+            rb.gravityScale = 0.5f;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        // If a game object tagged with wall exits the player collision
+        // and the player is on a wall
+        if (collision.gameObject.tag == "Wall" && isOnWall)
+        {
+            // Set isOnWall to false
             isOnWall = false;
 
+            // If the player is moving right, set the direction to 1
             if (movingRight)
             {
                 direction = 1;
             }
+            // Otherwise set direction to -1
             else
             {
                 direction = -1;
             }
 
+            // Reset the gravity scale to 1.5
             rb.gravityScale = 1.5f;
         }
     }
