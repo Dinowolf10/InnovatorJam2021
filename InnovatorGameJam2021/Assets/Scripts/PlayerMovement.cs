@@ -15,6 +15,8 @@ public class PlayerMovement : MonoBehaviour
 
     public int direction;
 
+    public bool movingRight;
+
     public float speed;
 
     public float jumpForce;
@@ -36,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
     {
         // Starts with the player moving right
         direction = 1;
+        movingRight = true;
     }
 
     // Update is called once per frame
@@ -77,7 +80,7 @@ public class PlayerMovement : MonoBehaviour
     private void CheckDirection()
     {
         // If moving to the right, have sprite face right
-        if (direction == 1)
+        if (movingRight)
         {
             spriteRenderer.flipX = false;
         }
@@ -102,15 +105,19 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     private void WallJump()
     {
+        rb.velocity = new Vector2(0, 0);
+
         // If player is currently moving right, change the direction to move left
-        if (direction == 1)
+        if (movingRight)
         {
             direction = -1;
+            movingRight = false;
         }
         // If player is currently moving left, change the direction to move right
-        else if (direction == -1)
+        else
         {
             direction = 1;
+            movingRight = true;
         }
 
         // Add force to the player using the player direction, forward, and verticle wall force
@@ -122,6 +129,15 @@ public class PlayerMovement : MonoBehaviour
         // If a game object tagged with ground enters the player collision, set isGrounded to true
         if (collision.gameObject.tag == "Ground")
         {
+            if (movingRight)
+            {
+                direction = 1;
+            }
+            else
+            {
+                direction = -1;
+            }
+
             isGrounded = true;
             animator.SetBool("IsJumping", false);
         }
@@ -129,6 +145,8 @@ public class PlayerMovement : MonoBehaviour
         else if (collision.gameObject.tag == "Wall")
         {
             isOnWall = true;
+            direction = 0;
+            rb.gravityScale = 0.5f;
         }
     }
 
@@ -144,6 +162,17 @@ public class PlayerMovement : MonoBehaviour
         else if (collision.gameObject.tag == "Wall")
         {
             isOnWall = false;
+
+            if (movingRight)
+            {
+                direction = 1;
+            }
+            else
+            {
+                direction = -1;
+            }
+
+            rb.gravityScale = 1.5f;
         }
     }
 }
