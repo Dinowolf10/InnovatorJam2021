@@ -379,7 +379,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8231968403723970935, guid: b530612439d1b8441a7e03f619ed4c14, type: 3}
       propertyPath: jumpForce
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8231968403723970935, guid: b530612439d1b8441a7e03f619ed4c14, type: 3}
       propertyPath: forwardWallForce
