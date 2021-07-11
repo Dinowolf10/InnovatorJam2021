@@ -12,6 +12,9 @@ public class CompleteLevel : MonoBehaviour
         
     }
 
+    /// <summary>
+    /// Completes the level when the Player enters the pool
+    /// </summary>
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
