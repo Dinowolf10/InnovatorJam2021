@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class CompleteLevel : MonoBehaviour
 {
+    public AudioSource splashSound;
+
     [SerializeField]
     private string nextSceneToLoad;
 
@@ -15,7 +17,15 @@ public class CompleteLevel : MonoBehaviour
     {
         if (collision.tag == "Player" && nextSceneToLoad != null)
         {
-            SceneManager.LoadScene(nextSceneToLoad);
+            collision.gameObject.SetActive(false);
+            splashSound.PlayOneShot(splashSound.clip);
+            StartCoroutine("NextLevelDelay");
         }
+    }
+
+    IEnumerator NextLevelDelay()
+    {
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene(nextSceneToLoad);
     }
 }
