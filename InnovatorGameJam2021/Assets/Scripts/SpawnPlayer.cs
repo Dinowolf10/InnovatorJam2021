@@ -7,6 +7,9 @@ public class SpawnPlayer : MonoBehaviour
 {
     public GameObject player;
     public Transform spawnPoint;
+    public AudioSource expolsion;
+
+    private bool isPlayerDead;
 
     // Start is called before the first frame update
     void Start()
@@ -17,8 +20,10 @@ public class SpawnPlayer : MonoBehaviour
     private void Update()
     {
         // If player is destroyed, call Respawn method
-       if (player == null)
+       if (player == null && !isPlayerDead)
         {
+            isPlayerDead = true;
+            expolsion.PlayOneShot(expolsion.clip);
             Respawn();
         }
     }
