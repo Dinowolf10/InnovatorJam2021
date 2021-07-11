@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -205,7 +206,7 @@ public class PlayerMovement : MonoBehaviour
         // If this player touches oil, destroy this player
         if (collision.gameObject.tag == "Oil")
         {
-            Destroy(this.gameObject);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
         // If player hits a super jump power-up, set super jump to true and destroy the super jump object

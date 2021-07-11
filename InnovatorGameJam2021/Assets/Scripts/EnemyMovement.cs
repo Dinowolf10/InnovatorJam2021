@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemyMovement : MonoBehaviour
 {
@@ -92,8 +93,7 @@ public class EnemyMovement : MonoBehaviour
         // If the player collides with this enemy, destroy the player and this enemy
         if(collision.gameObject.tag == "Player")
         {
-            Destroy(collision.gameObject);
-            Destroy(this.gameObject);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 }
