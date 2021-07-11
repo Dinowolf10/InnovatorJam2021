@@ -14,6 +14,8 @@ public class PlayerMovement : MonoBehaviour
 
     public SpriteRenderer spriteRenderer;
 
+    public GameObject trail;
+
     public int direction;
 
     public bool movingRight;
@@ -89,11 +91,13 @@ public class PlayerMovement : MonoBehaviour
         if (movingRight)
         {
             spriteRenderer.flipX = false;
+            trail.GetComponent<Transform>().position = new Vector3(-0.25f, -0.21f, 0);
         }
         // If moving to the left, have sprite face left
         else
         {
             spriteRenderer.flipX = true;
+            trail.GetComponent<Transform>().position = new Vector3(0.25f, -0.21f, 0);
         }
     }
 
