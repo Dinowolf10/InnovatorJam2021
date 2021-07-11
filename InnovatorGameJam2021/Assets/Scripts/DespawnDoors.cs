@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class DespawnDoors: MonoBehaviour
 {
-    public GameObject doors;
+    public GameObject enemy1;
+
+    public GameObject enemy2;
 
     public GameObject bridge;
 
     private void Start()
     {
-        bridge.SetActive(true);
+        bridge.SetActive(false);
     }
 
     /// <summary>
@@ -21,8 +23,9 @@ public class DespawnDoors: MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            Destroy(doors.gameObject);
-            bridge.SetActive(false);
+            Destroy(enemy1.gameObject);
+            Destroy(enemy2.gameObject);
+            bridge.SetActive(true);
         }
     }
 }
