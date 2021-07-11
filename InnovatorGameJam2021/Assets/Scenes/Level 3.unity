@@ -28249,6 +28249,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1153438595126236556, guid: f95d6e1fccca10f4289dea9095beddd2, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3699682797573781105, guid: f95d6e1fccca10f4289dea9095beddd2, type: 3}
       propertyPath: m_LocalPosition.y
       value: 45.21
@@ -28265,6 +28269,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1426497615}
+    - target: {fileID: 3699682798218969129, guid: f95d6e1fccca10f4289dea9095beddd2, type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 1203400480}
     - target: {fileID: 3699682798218969134, guid: f95d6e1fccca10f4289dea9095beddd2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -33988,6 +33996,11 @@ TilemapCollider2D:
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
+--- !u!1 &1203400480 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 720588433541771232, guid: f95d6e1fccca10f4289dea9095beddd2, type: 3}
+  m_PrefabInstance: {fileID: 607988206}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1426497614
 PrefabInstance:
   m_ObjectHideFlags: 0
