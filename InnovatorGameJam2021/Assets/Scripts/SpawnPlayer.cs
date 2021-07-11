@@ -8,6 +8,7 @@ public class SpawnPlayer : MonoBehaviour
     public GameObject player;
     public GameObject explosion;
     public Transform spawnPoint;
+    public AudioSource hotHotHotSound;
     public AudioSource expolsionSound;
 
     private bool isPlayerDead;
@@ -16,6 +17,7 @@ public class SpawnPlayer : MonoBehaviour
     void Start()
     {
         player.transform.position = spawnPoint.transform.position;
+        hotHotHotSound.PlayOneShot(hotHotHotSound.clip);
         explosion.SetActive(false);
     }
 

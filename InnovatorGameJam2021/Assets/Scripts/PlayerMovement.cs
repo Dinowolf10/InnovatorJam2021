@@ -20,6 +20,8 @@ public class PlayerMovement : MonoBehaviour
 
     public Transform trailTransform;
 
+    public AudioSource gruntSound;
+
     public int direction;
 
     public bool movingRight;
@@ -174,6 +176,8 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     private void Jump()
     {
+        gruntSound.PlayOneShot(gruntSound.clip);
+
         // Adds a force to the player's rigidbody on the Y axis using the set jumpForce
         rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
 
@@ -203,6 +207,8 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     private void WallJump()
     {
+        gruntSound.PlayOneShot(gruntSound.clip);
+
         // Sets the rigidbody velocity to 0
         rb.velocity = new Vector2(0, 0);
 
