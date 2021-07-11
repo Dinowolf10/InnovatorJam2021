@@ -32416,6 +32416,10 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3456399187014191108, guid: 8f538dc17cbca33448f0d26f9d873592, type: 3}
+      propertyPath: nextSceneToLoad
+      value: Level 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3456399187014191109, guid: 8f538dc17cbca33448f0d26f9d873592, type: 3}
       propertyPath: m_Name
       value: Pool

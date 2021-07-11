@@ -5,21 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class CompleteLevel : MonoBehaviour
 {
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [SerializeField]
+    private string nextSceneToLoad;
 
     /// <summary>
-    /// Completes the level when the Player enters the pool
+    /// Loads the next level when the Player enters the pool
     /// </summary>
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player")
+        if (collision.tag == "Player" && nextSceneToLoad != null)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            SceneManager.LoadScene(nextSceneToLoad);
         }
     }
 }

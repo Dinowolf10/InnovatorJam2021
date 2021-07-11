@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 10759691}
   - component: {fileID: 10759693}
   - component: {fileID: 10759692}
+  - component: {fileID: 10759694}
   m_Layer: 5
   m_Name: JumpText
   m_TagString: Untagged
@@ -202,6 +203,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 10759690}
   m_CullTransparentMesh: 0
+--- !u!114 &10759694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 10759690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &100868562
 GameObject:
   m_ObjectHideFlags: 0
@@ -4871,6 +4887,10 @@ PrefabInstance:
     - target: {fileID: 3456399187014191106, guid: 8f538dc17cbca33448f0d26f9d873592, type: 3}
       propertyPath: m_SortingLayer
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3456399187014191108, guid: 8f538dc17cbca33448f0d26f9d873592, type: 3}
+      propertyPath: nextSceneToLoad
+      value: Level 2
       objectReference: {fileID: 0}
     - target: {fileID: 3456399187014191109, guid: 8f538dc17cbca33448f0d26f9d873592, type: 3}
       propertyPath: m_Name
