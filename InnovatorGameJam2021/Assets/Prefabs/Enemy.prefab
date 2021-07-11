@@ -145,6 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a0053ced5d9dfa4eb2989beff46a086, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 3699682798218969128, guid: f95d6e1fccca10f4289dea9095beddd2, type: 3}
   enemyTransform: {fileID: 2723013854673946702}
   spriteRenderer: {fileID: 2723013854673946703}
   direction: 1

@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class EnemyMovement : MonoBehaviour
 {
+    public GameObject gameManager;
+
     public Transform enemyTransform;
 
     public SpriteRenderer spriteRenderer;
@@ -22,7 +24,7 @@ public class EnemyMovement : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -90,10 +92,11 @@ public class EnemyMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        // If the player collides with this enemy, destroy the player and this enemy
+        // If the player collides with this enemy, destory both objects
         if(collision.gameObject.tag == "Player")
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            Destroy(collision.gameObject);
+            Destroy(this.gameObject);
         }
     }
 }

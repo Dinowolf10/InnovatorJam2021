@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class PlayerMovement : MonoBehaviour
 {
     // Declare variables
+    public GameObject gameManager;
+
     public Transform playerTransform;
 
     public Rigidbody2D rb;
@@ -45,6 +47,8 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+
+
         // Starts with the player moving right
         direction = 1;
         movingRight = true;
@@ -63,6 +67,7 @@ public class PlayerMovement : MonoBehaviour
         {
             WallJump();
         }
+        Debug.Log(isGrounded);
     }
 
     private void FixedUpdate()
@@ -324,7 +329,7 @@ public class PlayerMovement : MonoBehaviour
         // If this player touches oil, destroy this player
         if (collision.gameObject.tag == "Oil")
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            Destroy(this.gameObject);
         }
 
         // If player hits a super jump power-up, set super jump to true and destroy the super jump object
