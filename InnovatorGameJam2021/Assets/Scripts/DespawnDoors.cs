@@ -6,7 +6,12 @@ public class DespawnDoors: MonoBehaviour
 {
     public GameObject doors;
 
-    public GameObject block;
+    public GameObject bridge;
+
+    private void Start()
+    {
+        bridge.SetActive(true);
+    }
 
     /// <summary>
     /// Despawns the doors blocking the player's path and allows the
@@ -17,7 +22,7 @@ public class DespawnDoors: MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             Destroy(doors.gameObject);
-            block.tag = "Ground";
+            bridge.SetActive(false);
         }
     }
 }
