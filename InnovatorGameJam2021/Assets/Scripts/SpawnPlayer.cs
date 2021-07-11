@@ -11,6 +11,8 @@ public class SpawnPlayer : MonoBehaviour
     public AudioSource hotHotHotSound;
     public AudioSource expolsionSound;
 
+    public AudioSource fireLoopSound;
+
     private bool isPlayerDead;
 
     // Start is called before the first frame update
@@ -28,6 +30,7 @@ public class SpawnPlayer : MonoBehaviour
         {
             isPlayerDead = true;
             explosion.SetActive(true);
+            fireLoopSound.Stop();
             expolsionSound.PlayOneShot(expolsionSound.clip);
             Respawn();
         }
@@ -35,6 +38,11 @@ public class SpawnPlayer : MonoBehaviour
         if (!isPlayerDead)
         {
             explosion.transform.position = player.transform.position;
+
+            if (!player.gameObject.active)
+            {
+                fireLoopSound.Stop();
+            }
         }
     }
 
