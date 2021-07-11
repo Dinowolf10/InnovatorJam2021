@@ -14,7 +14,9 @@ public class PlayerMovement : MonoBehaviour
 
     public SpriteRenderer spriteRenderer;
 
-    public GameObject trail;
+    public ParticleSystem trail;
+
+    public Transform trailTransform;
 
     public int direction;
 
@@ -87,17 +89,78 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     private void CheckDirection()
     {
-        // If moving to the right, have sprite face right
+        // If moving to the right, have sprite face right and set the location of the particle system
         if (movingRight)
         {
             spriteRenderer.flipX = false;
-            trail.GetComponent<Transform>().position = new Vector3(-0.25f, -0.21f, 0);
+
+            trailTransform.localPosition = new Vector3(-0.25f, -0.21f, 0);
+            trailTransform.localRotation = Quaternion.Euler(0, -90f, 90f);
+
         }
-        // If moving to the left, have sprite face left
+        // If moving to the left, have sprite face left and set the location of the particle system
         else
         {
             spriteRenderer.flipX = true;
-            trail.GetComponent<Transform>().position = new Vector3(0.25f, -0.21f, 0);
+
+            trailTransform.localPosition = new Vector3(0.25f, -0.21f, 0);
+            trailTransform.localRotation = Quaternion.Euler(0, 90f, 90f);
+        }
+
+        // If the player is moving up and on a wall
+        if (rb.velocity.y > 0 && isOnWall)
+        {
+            // Set the particle position to the right side of the player
+            if (movingRight)
+            {
+                trailTransform.localPosition = new Vector3(0.08f, -0.25f, 0);
+            }
+            // Set the particle position to the left side of the player
+            else
+            {
+                trailTransform.localPosition = new Vector3(-0.06f, -0.25f, 0);
+            }
+
+            // Set the rotation and gravity scale of the particle system
+            // Particles spawn downwards
+            trailTransform.localRotation = Quaternion.Euler(90f, -90, 90f);
+            SetParticleGravity(0);
+        }
+        // If the player is moving up and not on a wall
+        else if (rb.velocity.y > 0)
+        {
+            // Set the particle gravity to 1
+            SetParticleGravity(1);
+        }
+        // If the palyer is falling and is not grounded or on a wall
+        else if (rb.velocity.y < 0 && !isGrounded && !isOnWall)
+        {
+            // Set the particle gravity to 1
+            SetParticleGravity(1);
+        }
+        // If the player is falling and is not grounded
+        else if (rb.velocity.y < 0 && !isGrounded)
+        {
+            // Set the particle position to the right side of the player
+            if (movingRight)
+            {
+                trailTransform.localPosition = new Vector3(0.08f, 0.25f, 0);
+            }
+            // Set the particle position to the left side of the player
+            else
+            {
+                trailTransform.localPosition = new Vector3(-0.06f, 0.25f, 0);
+            }
+
+            // Set the rotation and gravity scale of the particle system
+            // Particles spawn upwards
+            trailTransform.localRotation = Quaternion.Euler(-90f, 0, 90f);
+            SetParticleGravity(0);
+        }
+        // If the player is grounded set the particle system gravity to 0
+        else if (isGrounded)
+        {
+            SetParticleGravity(0);
         }
     }
 
@@ -108,6 +171,26 @@ public class PlayerMovement : MonoBehaviour
     {
         // Adds a force to the player's rigidbody on the Y axis using the set jumpForce
         rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+
+        // Activate the particle system and set the gravity to 1
+        SetParticleGravity(1);
+        trail.gameObject.SetActive(true);
+
+        // Set player gravity scale to 1.5
+        rb.gravityScale = 1.5f;
+
+        // If the player jumps while running into a wall
+        if (isOnWall)
+        {
+            // Stop the particle system
+            trail.Stop();
+
+            // Hide the particle system
+            trail.gameObject.SetActive(false);
+
+            // Start a coroutine that waits 0.5 seconds until activating the particle system again
+            StartCoroutine(HideParticleSystem());
+        }
     }
 
     /// <summary>
@@ -145,6 +228,20 @@ public class PlayerMovement : MonoBehaviour
             // Add force to the player using the player direction, forward, and verticle wall force
             rb.AddForce(new Vector2(direction * forwardWallForce, verticalWallForce), ForceMode2D.Impulse);
         }
+
+        // Activate the particle system and set the gravity to 1
+        SetParticleGravity(1);
+        trail.gameObject.SetActive(true);
+    }
+
+    /// <summary>
+    /// Sets the particle system gravity
+    /// </summary>
+    /// <param name="num"></param>
+    private void SetParticleGravity(float num)
+    {
+        var trailSettings = trail.main;
+        trailSettings.gravityModifier = num;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -158,6 +255,10 @@ public class PlayerMovement : MonoBehaviour
 
             // Set isGrounded to true
             isGrounded = true;
+
+            // Activate the particle system and set the gravity to 0
+            SetParticleGravity(0);
+            trail.gameObject.SetActive(true);
 
             if (!isOnWall)
             {
@@ -205,6 +306,19 @@ public class PlayerMovement : MonoBehaviour
 
             // Set the gravity scale to 0.5
             rb.gravityScale = 0.5f;
+
+            // If the player is not grounded and runs into a wall
+            if (!isGrounded)
+            {
+                // Stop the particle system
+                trail.Stop();
+
+                // Hide the particle system
+                trail.gameObject.SetActive(false);
+
+                // Start a coroutine that waits 0.5 seconds until activating the particle system again
+                StartCoroutine(HideParticleSystem());
+            }
         }
 
         // If this player touches oil, destroy this player
@@ -220,6 +334,22 @@ public class PlayerMovement : MonoBehaviour
 
             Destroy(collision.gameObject);
         }
+    }
+
+    /// <summary>
+    /// Waits 0.5 seconds before activating the particle system
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator HideParticleSystem()
+    {
+        // Wait for 0.5 seconds
+        yield return new WaitForSeconds(0.5f);
+
+        // Unhide and activate the particle system
+        trail.gameObject.SetActive(true);
+
+        // Start the particle system
+        trail.Play();
     }
 
     private void OnTriggerExit2D(Collider2D collision)
