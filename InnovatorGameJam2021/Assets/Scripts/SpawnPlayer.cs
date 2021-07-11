@@ -6,8 +6,9 @@ using UnityEngine.SceneManagement;
 public class SpawnPlayer : MonoBehaviour
 {
     public GameObject player;
+    public GameObject explosion;
     public Transform spawnPoint;
-    public AudioSource expolsion;
+    public AudioSource expolsionSound;
 
     private bool isPlayerDead;
 
@@ -15,16 +16,23 @@ public class SpawnPlayer : MonoBehaviour
     void Start()
     {
         player.transform.position = spawnPoint.transform.position;
+        explosion.SetActive(false);
     }
 
     private void Update()
     {
-        // If player is destroyed, call Respawn method
+       // If player is destroyed, call Respawn method
        if (player == null && !isPlayerDead)
         {
             isPlayerDead = true;
-            expolsion.PlayOneShot(expolsion.clip);
+            explosion.SetActive(true);
+            expolsionSound.PlayOneShot(expolsionSound.clip);
             Respawn();
+        }
+
+        if (!isPlayerDead)
+        {
+            explosion.transform.position = player.transform.position;
         }
     }
 
