@@ -6,20 +6,33 @@ using UnityEngine.SceneManagement;
 public class SpawnPlayer : MonoBehaviour
 {
     public GameObject player;
+    public GameObject explosion;
     public Transform spawnPoint;
+    public AudioSource expolsionSound;
+
+    private bool isPlayerDead;
 
     // Start is called before the first frame update
     void Start()
     {
         player.transform.position = spawnPoint.transform.position;
+        explosion.SetActive(false);
     }
 
     private void Update()
     {
-        // If player is destroyed, call Respawn method
-       if (player == null)
+       // If player is destroyed, call Respawn method
+       if (player == null && !isPlayerDead)
         {
+            isPlayerDead = true;
+            explosion.SetActive(true);
+            expolsionSound.PlayOneShot(expolsionSound.clip);
             Respawn();
+        }
+
+        if (!isPlayerDead)
+        {
+            explosion.transform.position = player.transform.position;
         }
     }
 
