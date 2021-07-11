@@ -216,7 +216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 1, y: -1}
+  m_EffectDistance: {x: 2, y: -1}
   m_UseGraphicAlpha: 1
 --- !u!1 &100868562
 GameObject:
@@ -2236,6 +2236,7 @@ GameObject:
   - component: {fileID: 210017396}
   - component: {fileID: 210017398}
   - component: {fileID: 210017397}
+  - component: {fileID: 210017399}
   m_Layer: 5
   m_Name: WallJumpTextPart2
   m_TagString: Untagged
@@ -2304,6 +2305,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 210017395}
   m_CullTransparentMesh: 0
+--- !u!114 &210017399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 210017395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 2, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &390123940
 GameObject:
   m_ObjectHideFlags: 0
@@ -3436,6 +3452,7 @@ GameObject:
   - component: {fileID: 1357854544}
   - component: {fileID: 1357854546}
   - component: {fileID: 1357854545}
+  - component: {fileID: 1357854547}
   m_Layer: 5
   m_Name: WaterText
   m_TagString: Untagged
@@ -3504,6 +3521,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1357854543}
   m_CullTransparentMesh: 0
+--- !u!114 &1357854547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1357854543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 2, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1610059377
 GameObject:
   m_ObjectHideFlags: 0
@@ -3515,6 +3547,7 @@ GameObject:
   - component: {fileID: 1610059378}
   - component: {fileID: 1610059380}
   - component: {fileID: 1610059379}
+  - component: {fileID: 1610059381}
   m_Layer: 5
   m_Name: EnvironmentText
   m_TagString: Untagged
@@ -3583,6 +3616,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1610059377}
   m_CullTransparentMesh: 0
+--- !u!114 &1610059381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1610059377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 2, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1673455947
 GameObject:
   m_ObjectHideFlags: 0
@@ -4524,6 +4572,7 @@ GameObject:
   - component: {fileID: 1758211672}
   - component: {fileID: 1758211674}
   - component: {fileID: 1758211673}
+  - component: {fileID: 1758211675}
   m_Layer: 5
   m_Name: WallJumpTextPart1
   m_TagString: Untagged
@@ -4592,6 +4641,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1758211671}
   m_CullTransparentMesh: 0
+--- !u!114 &1758211675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1758211671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 2, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1852339800
 GameObject:
   m_ObjectHideFlags: 0
