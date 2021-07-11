@@ -204,8 +204,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 8231968403723970938, guid: b530612439d1b8441a7e03f619ed4c14, type: 3}
+  explosion: {fileID: 7508735688177065918, guid: 98841c9fc6090374da44f1498af344d0, type: 3}
   spawnPoint: {fileID: 3699682797573781105}
-  expolsion: {fileID: 7964012654161017603}
+  expolsionSound: {fileID: 7964012654161017603}
 --- !u!1001 &7076395330364026974
 PrefabInstance:
   m_ObjectHideFlags: 0

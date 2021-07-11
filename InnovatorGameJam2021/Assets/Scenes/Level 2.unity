@@ -1976,6 +1976,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1153438595126236556, guid: f95d6e1fccca10f4289dea9095beddd2, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3699682797573781105, guid: f95d6e1fccca10f4289dea9095beddd2, type: 3}
       propertyPath: m_LocalPosition.y
       value: -1.95
@@ -1992,6 +1996,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1402941741}
+    - target: {fileID: 3699682798218969129, guid: f95d6e1fccca10f4289dea9095beddd2, type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 1025732549}
     - target: {fileID: 3699682798218969134, guid: f95d6e1fccca10f4289dea9095beddd2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2038,6 +2046,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f95d6e1fccca10f4289dea9095beddd2, type: 3}
+--- !u!1 &1025732549 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 720588433541771232, guid: f95d6e1fccca10f4289dea9095beddd2, type: 3}
+  m_PrefabInstance: {fileID: 1025732548}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1037674282
 GameObject:
   m_ObjectHideFlags: 0
